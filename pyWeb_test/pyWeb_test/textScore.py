@@ -1,6 +1,6 @@
 #!python2
 # coding: utf-8
-import xlrd
+
 import re
 import nltk.stem
 import math
@@ -62,7 +62,7 @@ def state(score):
 
 def averageScore(vec):
     # 对本python文件而言，相对路径从当前文件夹开始，对web而言，相对路径从pyWeb_test开始
-    all_vecs = np.loadtxt("C:\\Users\\13249\\Downloads\\sap_project\\pyWeb_test\\feature_vectors.txt").tolist()
+    all_vecs = np.loadtxt('/home/jw/PycharmProjects/sap_project/pyWeb_test/feature_vectors.txt').tolist()
     score_sum = 0
 
     for v in all_vecs:
@@ -86,11 +86,11 @@ def mainProcess(text):
     vector = featureExtraction(text)
     vector = (vector[0].tolist())[0]
     if vector.count(0) == len(vector):
-        return "评分: -1" + state(-1)
+        return -1
 
     avgS = averageScore(vector)
     s = state(avgS)
-    return "评分: " + avgS + s
+    return avgS
 
 
 print mainProcess("hello, there is a problem in the sap system, and I can't fixe it, can you help me? thank you very much!hello, there is a problem in the sap system, and I can't fixe it, can you help me? thank you very much!hello, there is a problem in the sap system, and I can't fixe it, can you help me? thank you very much! hahahaha")
