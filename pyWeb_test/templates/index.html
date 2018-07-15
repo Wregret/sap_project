@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TextScore</title>
+    <style type="text/css">
+        body{
+            background-color: #FAFAFA
+        }
+        p{
+            color: #000000;
+            font-weight: bold;
+            margin-top: 10px;
+            margin-bottom: 2px;
+        }
+        #user_input{
+            overflow: auto;
+            word-break: normal;
+            word-wrap: break-word;
+            font-size: 16px;
+        }
+        #user_file{
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+        #try_out{
+            position: absolute;
+            left: 0;
+            font-size: 18px;
+            padding: 8px 15px;
+            text-align: center;
+        }
+        .result{
+            position: relative;
+            width: 100%;
+        }
+        .result{
+            position: absolute;
+            margin-top: 30px
+        }
+        .result #scoreInfo{
+            margin-left: 110px;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ hello }}</h1>
+     <form action="/texts" method="post" enctype="multipart/form-data">
+         {% csrf_token %}
+
+         <p>Text:</p>
+         <textarea id="user_input" rows="5" cols="60" placeholder="please input the bug description..." name="user_input"></textarea>
+
+         <p>File (required only if the Text is empty):</p>
+         <input type="file" id="user_file" name="user_file">
+
+
+         <div class="result">
+             <input type="submit" id="try_out" value="Try Out">
+             <p id="scoreInfo">{{ rlt }}</p>
+         </div>
+    </form>
+
+
+</body>
+</html>
